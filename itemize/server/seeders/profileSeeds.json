@@ -1,0 +1,293 @@
+[
+  {
+    "name": "Peter Tate",
+    "email": "petertate@comcast.net",
+    "password": "chooch",
+    "novels": [
+      {
+        "name": "Magnificent Ambersons, The",
+        "author": "Tarkington, Booth",
+        "rank": 100,
+        "completed": true
+      },
+      {
+        "name": "Ginger Man, The",
+        "author": "Donleavy, JP",
+        "rank": 99,
+        "completed": true
+
+      },
+      {
+        "name": "Postman Always Rings Twice, The",
+        "author": "Cain, James",
+        "rank": 98,
+        "completed": true
+      },
+      {
+        "name": "Sheltering Sky, The",
+        "author": "Bowles, Paul",
+        "rank": 97,
+        "completed": true
+      },
+      {
+        "name": "Sophie's Choice",
+        "author": "Styron, William",
+        "rank": 96,
+        "completed": true
+      
+      },
+      {
+        "name": "Under the Net",
+        "author": "Murdoch, Iris",
+        "rank": 95,
+        "completed": true
+      },
+      {
+        "name": "Wide Sargasso Sea",
+        "author": "Rhys, Jean",
+        "rank": 94,
+        "completed": true
+      },
+      {
+        "name": "Magus, The",
+        "author": "Fowles, John",
+        "rank": 93,
+        "completed": true
+      },
+      {
+        "name": "Ironweed",
+        "author": "Kennedy, William",
+        "rank": 92,
+        "completed": true
+      },
+      {
+        "name": "Tobacco Road",
+        "author": "Caldwell, Erskine",
+        "rank": 91,
+        "completed": true
+      },
+      {
+        "name": "Midnight's Children",
+        "author": "Rushdie, Salman",
+        "rank": 90,
+        "completed": true
+      },
+      {
+        "name": "Loving/Living/Party Going",
+        "author": "Green, Henry",
+        "rank": 89,
+        "completed": true
+      },
+      {
+        "name": "Call of the Wild",
+        "author": "London, Jack",
+        "rank": 88,
+        "completed": true
+      },
+      {
+        "name": "Old Wives' Tale, The",
+        "author": "Bennett, Arnold",
+        "rank": 87,
+        "completed": true
+      },
+      {
+        "name": "Ragtime",
+        "author": "Doctorow, EL",
+        "rank": 86,
+        "completed": true
+      },
+      {
+        "name": "Lord Jim",
+        "author": "Conrad, Joseph",
+        "rank": 85,
+        "completed": true
+      },
+      {
+        "name": "Death of the Heart, The",
+        "author": "Bowen, Elizabeth",
+        "rank": 84,
+        "completed": true
+      },
+      {
+        "name": "Bend in the River, A",
+        "author": "Naipaul, VS",
+        "rank": 83,
+        "completed": true
+      },
+      {
+        "name": "Angle of Repose",
+        "author": "Stegner, Wallace",
+        "rank": 82,
+        "completed": true
+      },
+      {
+        "name": "Adventures of Augie March, The",
+        "author": "Bellow, Saul",
+        "rank": 81,
+        "completed": true
+      },
+      {
+        "name": "Brideshead Revisited",
+        "author": "Waugh, Evelyn",
+        "rank": 80,
+        "completed": true
+      },
+      {
+        "name": "Room with a View, A",
+        "author": "Forster, EM",
+        "rank": 79,
+        "completed": true
+      },
+      {
+        "name": "Kim",
+        "author": "Kipling, Rudyard",
+        "rank": 78,
+        "completed": true
+      },
+      {
+        "name": "Finnegans Wake",
+        "author": "Joyce, James",
+        "rank": 77,
+        "completed": false
+      },
+      {
+        "name": "Prime of Miss Jean Brodie, The",
+        "author": "Spark, Muriel",
+        "rank": 76,
+        "completed": true
+      },
+      {
+        "name": "Scoop",
+        "author": "Waugh, Evelyn",
+        "rank": 75,
+        "completed": true
+      },
+      {
+        "name": "Farewell to Arms, A",
+        "author": "Hemingway, Ernest",
+        "rank": 74,
+        "completed": true
+      },
+      {
+        "name": "Day of the Locust, The",
+        "author": "West, Nathanael",
+        "rank": 73,
+        "completed": false
+      },
+      {
+        "name": "House for Mr. Biswas, A",
+        "author": "Naipaul, VS",
+        "rank": 72,
+        "completed": true
+      },
+      {
+        "name": "High Wind in Jamaica",
+        "author": "Hughes, Richard",
+        "rank": 71,
+        "completed": true
+      },
+      {
+        "name": "Alexandria Quartet, The - Justine",
+        "author": "Durrell, Lawrence",
+        "rank": 70,
+        "completed": true
+      },
+      {
+        "name": "Alexandria Quartet, The - Balthazar",
+        "author": "Durrell, Lawrence",
+        "rank": 70,
+        "completed": false
+      },
+      {
+        "name": "Alexandria Quartet, The - Mountolive",
+        "author": "Durrell, Lawrence",
+        "rank": 70,
+        "completed": false
+      },
+      {
+        "name": "Alexandria Quartet, The - Clea",
+        "author": "Durrell, Lawrence",
+        "rank": 70,
+        "completed": false
+      },
+      {
+        "name": "House of Mirth, The",
+        "author": "Wharton, Edith",
+        "rank": 69,
+        "completed": false
+      },
+      {
+        "name": "Main Street",
+        "author": "Lewis, Sinclair",
+        "rank": 68,
+        "completed": true
+      },
+      {
+        "name": "Heart of Darkness",
+        "author": "Conrad, Joseph",
+        "rank": 67,
+        "completed": true
+      },
+      {
+        "name": "Of Human Bondage",
+        "author": "Maugham, Somerset",
+        "rank": 66,
+        "completed": true
+      },
+      {
+        "name": "Clockwork Orange, A",
+        "author": "Burgess, Anthony",
+        "rank": 65,
+        "completed": true
+      },
+      {
+        "name": "Catcher in the Rye, The",
+        "author": "Salinger, JD",
+        "rank": 64,
+        "completed": true
+      },
+      {
+        "name": "Wapshot Chronicle, The",
+        "author": "Cheever, John",
+        "rank": 63,
+        "completed": true
+      },
+      {
+        "name": "From Here to Eternity",
+        "author": "Jones, James",
+        "rank": 62,
+        "completed": true
+      },
+      {
+        "name": "Death Comes for the Archbishop",
+        "author": "Cather, Willa",
+        "rank": 61,
+        "completed": true
+      },
+      {
+        "name": "Moviegoer, The",
+        "author": "Percy, Walker",
+        "rank": 60,
+        "completed": true
+      },
+      {
+        "name": "Zuleika Dobson",
+        "author": "Beerbohm, Max",
+        "rank": 59,
+        "completed": false
+      },
+      {
+        "name": "Age of Innocence, The",
+        "author": "Wharton, Edith",
+        "rank": 58,
+        "completed": false
+      },
+      {
+        "name": "Parade's End",
+        "author": "Ford, Ford Maddox",
+        "rank": 57,
+        "completed": false
+      }
+    ]
+  }
+]

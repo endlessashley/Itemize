@@ -1,4 +1,4 @@
-const Profile = require('./Profile');
+const User = require('./User');
 const Novel = require('./Novel');
 
-module.exports = { Profile, Novel };
+module.exports = { User, Novel };

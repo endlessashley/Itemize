@@ -15,7 +15,7 @@ const novelSchema = new Schema({
   rank: {
     type: Number,
   },
-  completed: {
+  isComplete: {
     type: Boolean,
   }
 //   category: {

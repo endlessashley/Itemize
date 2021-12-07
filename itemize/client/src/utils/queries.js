@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PROFILES = gql`
-  query allProfiles {
-    profiles {
+export const QUERY_USERS = gql`
+  query allUsers {
+    users {
       _id
       name
       novels
@@ -10,9 +10,9 @@ export const QUERY_PROFILES = gql`
   }
 `;
 
-export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
+export const QUERY_SINGLE_USER = gql`
+  query singleUser($userId: ID!) {
+    user(userId: $userId) {
       _id
       name
       novels
@@ -25,7 +25,44 @@ export const QUERY_ME = gql`
     me {
       _id
       name
-      novels
+      novels {
+        _id
+        name
+        author
+        rank
+        isComplete
+      }
+    }
+  }
+`;
+
+export const QUERY_NOVELS = gql`
+  query novels {
+    novels {
+      _id
+      author
+      name
+      rank
+      isComplete
+    }
+  }
+`;
+
+
+export const QUERY_USER = gql`
+query user
+  {
+    user {
+      firstName
+      lastName
+      readBooks {
+        _id 
+        readDate
+        bookId
+          name
+          author
+          points
+      }
     }
   }
 `;

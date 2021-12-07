@@ -1,16 +1,16 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
 
-import { REMOVE_SKILL } from '../../utils/mutations';
+import { REMOVE_NOVEL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
-const SkillsList = ({ skills, isLoggedInUser = false }) => {
-  const [removeSkill, { error }] = useMutation(REMOVE_SKILL, {
-    update(cache, { data: { removeSkill } }) {
+const SkillsList = ({ novels, isLoggedInUser = false }) => {
+  const [removeNovel, { error }] = useMutation(REMOVE_NOVEL, {
+    update(cache, { data: { removeNovel } }) {
       try {
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: removeSkill },
+          data: { me: removeNovel },
         });
       } catch (e) {
         console.error(e);
@@ -18,33 +18,33 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
     },
   });
 
-  const handleRemoveSkill = async (skill) => {
+  const handleRemoveNovel = async (novel) => {
     try {
-      const { data } = await removeSkill({
-        variables: { skill },
+      const { data } = await removeNovel({
+        variables: { novel },
       });
     } catch (err) {
       console.error(err);
     }
   };
 
-  if (!skills.length) {
-    return <h3>No Skills Yet</h3>;
+  if (!novels.length) {
+    return <h3>No Novels Yet</h3>;
   }
 
   return (
     <div>
       <div className="flex-row justify-space-between my-4">
-        {skills &&
-          skills.map((skill) => (
-            <div key={skill} className="col-12 col-xl-6">
+        {novels &&
+          novels.map((novel) => (
+            <div key={novel} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header text-light p-2 m-0 display-flex align-center">
-                  <span>{skill}</span>
+                  <span>{novel}</span>
                   {isLoggedInUser && (
                     <button
                       className="btn btn-sm btn-danger ml-auto"
-                      onClick={() => handleRemoveSkill(skill)}
+                      onClick={() => handleRemoveNovel(novel)}
                     >
                       X
                     </button>

@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+// import { useStoreContext } from "../../utils/GlobalState";
 
 import { ADD_NOVEL } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-export default function NovelForm({ userId }) {
-  const [formState, setFormState] = useState({ name: '', author: '', rank: '' });
+function NovelForm( props ) {
+  // const [state, dispatch] = useStoreContext();
+  const [formState, setFormState] = useState({ name: '', author: '', rank: '', isComplete: '' });
+  console.log(formState)
 
   const [addNovel, { error }] = useMutation(ADD_NOVEL);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const { data } = await addNovel({
-        variables: { userId, ...formState },
+      const data = await addNovel({
+        variables: { name: formState.name, author: formState.author, rank: formState.rank, isComplete: formState.isComplete },
       });
 
       //       setNovel({name: '', author: '', rank: '', completed: ''});
@@ -27,7 +29,6 @@ export default function NovelForm({ userId }) {
 
       // window.location.reload();
       console.log(formState)
-      console.log(data)
     } catch (err) {
       console.error(err);
     }
@@ -42,11 +43,11 @@ export default function NovelForm({ userId }) {
       });
     };
 
-    const handleCompletedClick = () => {
-      let complete = !formState.isComplete;
-      console.log(complete);
-      setFormState({ isComplete: complete});
-    }
+    // const handleCompletedClick = () => {
+    //   let complete = !formState.isComplete;
+    //   console.log(complete);
+    //   setFormState({ isComplete: complete});
+    // }
 
 
 
@@ -161,6 +162,7 @@ export default function NovelForm({ userId }) {
               name="author"
               placeholder="Author"
               value={formState.author}
+              type="author"
               className="form-input w-100"
               onChange={handleChange}
             />
@@ -168,9 +170,10 @@ export default function NovelForm({ userId }) {
           <div className="col-12 col-lg-9">
             <input
               name="name"
+              type="name"
               placeholder="Title"
-              value={formState.title}
               className="form-input w-100"
+              value={formState.name}
               onChange={handleChange}
             />
           </div>
@@ -178,18 +181,29 @@ export default function NovelForm({ userId }) {
             <input
               name="rank"
               placeholder="Rank"
+              type="rank"
               value={formState.rank}
               className="form-input w-100"
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="col-12 col-lg-9">
+            <input
+              name="isComplete"
+              placeholder="Completed? Y/N"
+              type="isComplete"
+              value={formState.isComplete}
+              className="form-input w-100"
+              onChange={handleChange}
+            />
+          </div>
+          {/* <div>
           <label>Completed?   </label>
     <input name="isComplete" type="checkbox" 
     defaultChecked={formState.isComplete} 
     onChange={handleCompletedClick} 
     className="filled-in" id="filled-in-box"/>
-  </div>
+  </div> */}
           <div className="col-12 col-lg-3">
             <button className="btn btn-primary btn-block py-3" type="submit">
               Add Novel
@@ -212,4 +226,4 @@ export default function NovelForm({ userId }) {
 }
 
 
-
+export default NovelForm;

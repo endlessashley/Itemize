@@ -23,10 +23,10 @@ export const ADD_SKILL = gql`
 `;
 
 export const ADD_NOVEL = gql`
-  mutation addNovel($author: String!, $name: String!, $rank: Int, $isComplete: Boolean) {
+  mutation addNovel($author: String!, $name: String!, $rank: Int, $isComplete: String) {
     addNovel(author: $author, name: $name, rank: $rank, isComplete: $isComplete) {
-      name
       author
+      name
       rank
       isComplete
     }
@@ -57,7 +57,7 @@ export const LOGIN_USER = gql`
 `;
 
 export const REMOVE_NOVEL = gql`
-  mutation removeNovel($name: String!, $author: String!, $rank: String!, $isComplete: Boolean!) {
+  mutation removeNovel($name: String!, $author: String!, $rank: String!, $isComplete: String!) {
     removeNovel(name: $name, author: $author, rank: $rank, isComplete: $isComplete) {
       _id
       name

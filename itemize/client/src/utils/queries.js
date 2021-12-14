@@ -11,13 +11,20 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_SINGLE_USER = gql`
-  query singleUser($userId: ID!) {
-    user(userId: $userId) {
+query singleUser
+{
+  user {
+    _id
+    name
+    novels {
       _id
       name
-      novels
+      author
+      rank
+      isComplete
     }
   }
+}
 `;
 
 export const QUERY_ME = gql`

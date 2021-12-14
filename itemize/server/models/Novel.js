@@ -16,7 +16,7 @@ const novelSchema = new Schema({
     type: Number,
   },
   isComplete: {
-    type: Boolean,
+    type: String,
   }
 //   category: {
 //     type: Schema.Types.ObjectId,

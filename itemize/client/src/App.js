@@ -16,6 +16,20 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import NovelsList from './pages/NovelsList';
 
+import { onError } from "@apollo/client/link/error";
+
+// Log any GraphQL errors or network error that occurred
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    );
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -35,7 +49,12 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+  onError: ({ networkError, graphQLErrors }) => {
+    console.log('graphQLErrors', graphQLErrors)
+    console.log('networkError', networkError)
+  }
 });
+
 
 function App() {
   return (

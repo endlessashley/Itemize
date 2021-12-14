@@ -18,7 +18,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     author: String
-    rank: Int
+    rank: String
     isComplete: String
   }
 
@@ -42,7 +42,7 @@ const typeDefs = gql`
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addNovel(name: String, author: String, rank: Int, isComplete: String): Novel
+    addNovel(name: String, author: String, rank: String, isComplete: String): Novel
 
     addNewNovel(userId: ID!, novelInput: NovelInput!): User
 

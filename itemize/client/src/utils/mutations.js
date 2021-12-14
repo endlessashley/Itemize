@@ -12,15 +12,6 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_SKILL = gql`
-  mutation addSkill($userId: ID!, $skill: String!) {
-    addSkill(userId: $userId, skill: $skill) {
-      _id
-      name
-      skills
-    }
-  }
-`;
 
 export const ADD_NOVEL = gql`
   mutation addNovel($author: String!, $name: String!, $rank: String, $isComplete: String) {
@@ -33,16 +24,6 @@ export const ADD_NOVEL = gql`
   }
 `;
 
-export const ADD_NEW_NOVEL = gql`
-mutation addNewNovel ($userId: ID!, $novelInput: NovelInput!) {
-  addNewNovel(userId: $userId, novelInput: $novelInput) {
-   name
-   author
-   rank
-   isComplete
-  }
-}
-`;
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {

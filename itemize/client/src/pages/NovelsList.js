@@ -17,6 +17,8 @@ function NovelsList() {
 
     }
 
+
+
     return (
         <>
             <div className="container">
@@ -28,7 +30,8 @@ function NovelsList() {
                             {user.novels.map((novel) => (
                                 <div
                                     key={novel._id}
-                                    className="col-sm-12 col-md-3 col-lg-3 card">
+                                    className="col-sm-12 col-md-3 col-lg-3 card" >
+                                        <Link to ={`/noveldetail/${novel._id}`}>
                                     <p> <span className="card-subheader">Title:</span> {novel.name}
                                         < br />
                                         <span className="card-subheader">Author:</span> {novel.author}
@@ -37,6 +40,7 @@ function NovelsList() {
                                         < br />
                                         <span className="card-subheader">Completed:</span> {novel.isComplete}
                                     </p>
+                                    </Link>
                                 </div>
 
                                 

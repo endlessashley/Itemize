@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 function NovelForm( props ) {
   // const [state, dispatch] = useStoreContext();
   const [formState, setFormState] = useState({ name: '', author: '', rank: '', isComplete: '' });
-  console.log(formState)
+ 
 
   const [addNovel, { error }] = useMutation(ADD_NOVEL);
 
@@ -28,7 +28,7 @@ function NovelForm( props ) {
       //   };
 
       // window.location.reload();
-      console.log(formState)
+      
     } catch (err) {
       console.error(err);
     }

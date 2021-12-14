@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 // import NovelsList from '../components/NovelsList';
 import NovelForm from '../components/NovelForm';
 
+import { Link } from 'react-router-dom';
 
 import {
   QUERY_SINGLE_USER
@@ -68,7 +69,15 @@ const Profile = () => {
     //   )}
     // )}
 
-<div>hello</div>
+<div className="container">
+  <div className="row">
+    <div className="card">
+      <Link to = {`novels/${user._id}`}>
+        <p>Novels</p>
+      </Link>
+    </div>
+  </div>
+</div>
 
 
   );

@@ -2,16 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
+import {QUERY_SINGLE_USER} from '../utils/queries'
+
 
 function NovelDetail(){
-   
+
+    
+    // const {data} = useQuery(QUERY_SINGLE_USER)
+    // let user;
+
+    // if (data) {
+    //     user=data.user
+    // }
+
 
     return (
         <div>hello</div>
     )
 }
 
-// import { useStoreContext } from '../utils/GlobalState';
+
 // import {
 
 //   UPDATE_BOOKS,

@@ -27,6 +27,21 @@ query singleUser
 }
 `;
 
+export const QUERY_SINGLE_NOVEL = gql`
+query getNovel ($_id: ID)
+{
+  novels(_id: $_id) {
+    _id
+    name
+    author
+    rank
+    isComplete
+  }
+}
+`;
+
+
+
 export const QUERY_ME = gql`
   query me {
     me {
@@ -56,20 +71,5 @@ export const QUERY_NOVELS = gql`
 `;
 
 
-export const QUERY_USER = gql`
-query user
-  {
-    user {
-      firstName
-      lastName
-      readBooks {
-        _id 
-        readDate
-        bookId
-          name
-          author
-          points
-      }
-    }
-  }
-`;
+
+

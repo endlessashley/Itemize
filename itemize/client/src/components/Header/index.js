@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
+import { Redirect, useParams } from 'react-router-dom';
 
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+
   };
   return (
     <header className="mb-4 py-3 display-flex align-center">
@@ -25,9 +27,10 @@ const Header = () => {
               <Link className="btn btn-lg btn-primary m-2" to="/me">
                 View My Profile
               </Link>
-              <button className="btn btn-lg btn-primary m-2" onClick={logout}>
-                Logout
+              <Link to = "/">
+              <button className="btn btn-lg btn-primary m-2" onClick={logout}>Log Out
               </button>
+              </Link>
             </>
           ) : (
             <>

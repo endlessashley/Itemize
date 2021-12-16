@@ -31,6 +31,7 @@ const Profile = () => {
   if (data) {
     user = data.user;
     console.log(user)
+    console.log(user._id)
   }
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
@@ -70,13 +71,20 @@ const Profile = () => {
     // )}
 
 <div className="container">
-  <div className="row">
-    <div className="card">
-      <Link to = {`novels/${user._id}`}>
-        <p>Novels</p>
+  {user? (
+    <>
+    <h2>{user.name}'s Lists:</h2>
+    <div className="row">
+      <Link to = {`/novels/${user._id}`}>
+      <div className="card">
+        Novels
+      </div>
       </Link>
     </div>
-  </div>
+    </>
+  ):null}
+
+ 
 </div>
 
 

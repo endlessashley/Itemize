@@ -15,7 +15,8 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NovelsList from './pages/NovelsList';
-import NovelDetail from './pages/NovelDetail'
+import NovelDetail from './pages/NovelDetail';
+
 
 import { onError } from "@apollo/client/link/error";
 

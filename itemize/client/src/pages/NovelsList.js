@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../utils/queries';
 
-import NovelForm from "../components/NovelForm"
+import NovelForm from "../components/NovelForm";
+import UpdateNovel from "../components/UpdateNovel"
 
 function NovelsList() {
     const { data } = useQuery(QUERY_SINGLE_USER);
@@ -41,6 +42,7 @@ function NovelsList() {
                                         <span className="card-subheader">Completed:</span> {novel.isComplete}
                                     </p>
                                     </Link>
+                                    <UpdateNovel/>
                                 </div>
 
                                 

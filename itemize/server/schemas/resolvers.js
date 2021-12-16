@@ -8,7 +8,10 @@ const resolvers = {
       return User.find();
     },
 
-
+    // novels: async (parent, {_id, name, author, isComplete, rank}, ) => {
+    //   return await Novel.findById(_id)
+      
+    // },
       user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id)
@@ -79,6 +82,17 @@ const resolvers = {
         return novel;
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+    updateNovel: async (parent, { novelId, author, name, rank, isComplete }, context) => {
+      if (context.user) {
+        const updatedNovel = await Novel.findByIdAndUpdate(
+          {_id: novelId}, 
+          {isComplete},
+          {new: true}
+        );
+        return updatedNovel;
+      }
+      throw new AuthenticationError('You need to be logged in!')
     },
   },
 };

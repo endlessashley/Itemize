@@ -1,0 +1,1 @@
+export const UPDATE_NOVELS = "UPDATE_NOVELS"

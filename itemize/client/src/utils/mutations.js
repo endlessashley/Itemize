@@ -25,8 +25,8 @@ export const ADD_NOVEL = gql`
 `;
 
 export const UPDATE_NOVEL = gql`
-  mutation updateNovel($novelId: ID!, $isComplete: String) {
-    updateNovel(novelId: $novelId, isComplete: $isComplete) {
+  mutation updateNovel($_id: ID!, $isComplete: String) {
+    updateNovel(_id: $_id, isComplete: $isComplete) {
       _id
       isComplete
     }

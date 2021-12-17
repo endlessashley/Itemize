@@ -80,8 +80,8 @@ const resolvers = {
         });
         console.log(novel);
     
-        await User.findOneAndUpdate(
-        context.user._id, {$push: {novels: novel}});
+        // await User.findOneAndUpdate(
+        // context.user._id, {$push: {novels: novel}});
     
         return novel;
       }
@@ -96,7 +96,6 @@ const resolvers = {
         );
         return updatedNovel;
       
-      throw new AuthenticationError('You need to be logged in!')
     },
   },
 };

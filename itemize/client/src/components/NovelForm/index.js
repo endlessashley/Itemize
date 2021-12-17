@@ -7,10 +7,10 @@ import { ADD_NOVEL } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-function NovelForm( props ) {
+function NovelForm(props) {
   // const [state, dispatch] = useStoreContext();
   const [formState, setFormState] = useState({ name: '', author: '', rank: '', isComplete: '' });
- 
+
 
   const [addNovel, { error }] = useMutation(ADD_NOVEL);
 
@@ -22,20 +22,20 @@ function NovelForm( props ) {
       });
 
       // window.location.reload();
-      
+
     } catch (err) {
       console.error(err);
     }
   }
 
-    const handleChange = (event) => {
-      const { name, value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-      setFormState({
-        ...formState,
-        [name]: value,
-      });
-    };
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
 
 
@@ -79,14 +79,14 @@ function NovelForm( props ) {
             />
           </div>
           <div className="col-12 col-lg-9">
-            <input
-              name="isComplete"
-              placeholder="Completed? Y/N"
-              type="isComplete"
-              value={formState.isComplete}
-              className="form-input w-100"
+            <select value={formState.isComplete}
               onChange={handleChange}
-            />
+              type="isComplete"
+              name="isComplete"
+              className="form-input w-100">
+              <option value="Complete">Complete</option>
+              <option value="Incomplete">Incomplete</option>
+            </select>
           </div>
           {/* <div>
           <label>Completed?   </label>
@@ -107,13 +107,13 @@ function NovelForm( props ) {
           )}
         </form>
       ) : (<p>
-                  You need to be logged in to endorse skills. Please{' '}
-                  <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-                </p>)
+        You need to be logged in to endorse skills. Please{' '}
+        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+      </p>)
 
-};
-</div>
-)
+      };
+    </div>
+  )
 }
 
 

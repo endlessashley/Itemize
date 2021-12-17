@@ -32,19 +32,21 @@ function NovelsList() {
         console.log(formState)
       };
 
-    // const handleEditSubmit = (event) => {
-    //     event.preventDefault();
-    //     try {
-    //       const data =  editNovel({
-    //         variables: { _id: novel._id, isComplete: formState.isComplete },
-    //       });
-          
-    //       // window.location.reload();
-          
-    //     } catch (err) {
-    //       console.error(err);
-    //     }
-    //   }
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+
+        // if (event.target = "Yes") {
+        //     formState.isComplete = "Yes"
+        // } else formState.isComplete = "No"
+  
+    //     setFormState({
+    //         value: event.target.value
+    //     });
+    //   };
+
+    // const handleChange = (event) => {
+    //     this.setFormState({value: event.target.value})
+    // }
 
 
     return (
@@ -54,7 +56,7 @@ function NovelsList() {
 
                     {novels ? (
                         <>
-                            <h2>Novels</h2>
+                            <h2>Your Novels:</h2>
                             {novels.map((novel) => (
                                 <div
                                     key={novel._id}
@@ -72,21 +74,28 @@ function NovelsList() {
                                           className="flex-row justify-center justify-space-between-md align-center"
                                               onSubmit={e=> {
                                                   e.preventDefault();
-                                                  editNovel({variables: {_id: novel._id, isComplete: formState.value}});
+                                                  editNovel({variables: {_id: novel._id, isComplete: formState.isComplete}});
                                               }}
                                               >
-                                        
-                                                <input
+                                                  <select value={formState.isComplete}
+                                                   onChange={handleChange}
+                                                   type="isComplete"
+                                                   name="isComplete"
+                                                   className="form-input w-100">
+                                                      <option value="Complete">Complete</option>
+                                                      <option value="Incomplete">Incomplete</option>
+                                                  </select>
+                                                {/* <input
                                                   name="isComplete"
                                                   placeholder={novel.isComplete}
                                                   value={formState.isComplete}
                                                   type="isComplete"
                                                   className="form-input w-100"
                                                   onChange={handleChange}
-                                                />
+                                                /> */}
 
                                     
-                                        <button className="btn btn-primary btn-block py-3" type="submit">Update Novel</button>
+                                        <button className="btn btn-primary  py-1" type="submit">Submit</button>
                                     </form>
                                 </div>
 

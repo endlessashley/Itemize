@@ -9,7 +9,7 @@ import NovelForm from "../components/NovelForm";
 import UpdateNovel from "../components/UpdateNovel"
 
 function NovelsList() {
-    const { data } = useQuery(QUERY_NOVELS);
+    const {loading, data } = useQuery(QUERY_NOVELS);
     const [formState, setFormState] = useState('');
 
     const [editNovel, {error}] = useMutation(UPDATE_NOVEL)
@@ -20,6 +20,8 @@ function NovelsList() {
         novels = data.novels
         console.log(novels)
     }
+
+    
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -32,26 +34,14 @@ function NovelsList() {
         console.log(formState)
       };
 
-    // const handleChange = (event) => {
-    //     const { name, value } = event.target;
 
-        // if (event.target = "Yes") {
-        //     formState.isComplete = "Yes"
-        // } else formState.isComplete = "No"
-  
-    //     setFormState({
-    //         value: event.target.value
-    //     });
-    //   };
 
-    // const handleChange = (event) => {
-    //     this.setFormState({value: event.target.value})
-    // }
 
 
     return (
         <>
             <div className="container">
+                hello
                 <div className="row">
 
                     {novels ? (
@@ -85,14 +75,7 @@ function NovelsList() {
                                                       <option value="Complete">Complete</option>
                                                       <option value="Incomplete">Incomplete</option>
                                                   </select>
-                                                {/* <input
-                                                  name="isComplete"
-                                                  placeholder={novel.isComplete}
-                                                  value={formState.isComplete}
-                                                  type="isComplete"
-                                                  className="form-input w-100"
-                                                  onChange={handleChange}
-                                                /> */}
+
 
                                     
                                         <button className="btn btn-primary  py-1" type="submit">Submit</button>

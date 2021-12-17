@@ -8,9 +8,11 @@ const resolvers = {
       return User.find();
     },
 
-    novels: async  => {
-      return  Novel.find();
-      
+    novels: async ()  => {
+
+        return Novel.find()
+
+     
     },
 
     novel: async (parent, {novelId}) => {
@@ -70,22 +72,15 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addNovel: async (parent, { author, name, rank, isComplete }, context) => {
-      if (context.user) {
-        const novel = new Novel ({
+    addNovel: async (parent, { author, name, rank, isComplete }) => {
+     
+       return Novel.create ({
           author,
           name,
           rank,
           isComplete
         });
-        console.log(novel);
-    
-        // await User.findOneAndUpdate(
-        // context.user._id, {$push: {novels: novel}});
-    
-        return novel;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+
     },
     updateNovel: async (parent, { _id, author, name, rank, isComplete }, context) => {
      

@@ -969,7 +969,7 @@ a:hover {
   text-align: center;
   display: inline-block;
   padding: 0.5rem 1.2rem;
-  margin: 0;
+  margin-bottom: .5rem;
   text-decoration: none;
   font-size: 1rem;
   border-radius: 0.3rem;
@@ -1109,7 +1109,7 @@ form .form-input {
   color: #1a1a1a;
   background-color: #ffffff;
   margin: 0.625rem 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: 1px solid #484848;
   border-radius: 0.3rem;
 }
@@ -1670,4 +1670,8 @@ label form [type='radio'] {
 
 .card-subheader {
   color: #081921
+}
+
+#edit-box {
+  display: none;
 }

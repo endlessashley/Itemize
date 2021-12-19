@@ -35,9 +35,9 @@ const typeDefs = gql`
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addNovel(name: String, author: String, rank: String, isComplete: String): Novel
-    updateNovel(_id: ID! name: String, author: String, rank: String, isComplete: String): Novel
+    updateNovel(_id: ID!, name: String, author: String, rank: String, isComplete: String): Novel
     removeUser: User
-    removeNovel(name: String!, author: String!, rank: String!, isComplete: String): Novel
+    removeNovel(_id: ID!): Novel
   }
 `;
 

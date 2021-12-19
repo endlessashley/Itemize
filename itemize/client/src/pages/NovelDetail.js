@@ -12,7 +12,7 @@ import { QUERY_NOVELS } from '../utils/queries';
 
 
 function NovelDetail() {
-  const [state, dispatch] = useStoreContext();
+  const [state, dispatch] = useState();
   const { id } = useParams();
 
   const [currentNovel, setCurrentNovel] = useState();
@@ -28,7 +28,7 @@ function NovelDetail() {
     } else if (data) {
       dispatch({
         type: UPDATE_NOVELS,
-        books: data.novels,
+        novels: data.novels,
       });
     }
   }, [novels, data, loading, dispatch, id]);

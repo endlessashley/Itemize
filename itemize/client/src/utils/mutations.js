@@ -46,11 +46,9 @@ export const LOGIN_USER = gql`
 `;
 
 export const REMOVE_NOVEL = gql`
-  mutation removeNovel($name: String!, $author: String!, $rank: String!, $isComplete: String!) {
-    removeNovel(name: $name, author: $author, rank: $rank, isComplete: $isComplete) {
+  mutation removeNovel($_id: ID!) {
+    removeNovel(_id: $_id) {
       _id
-      name
-      novels
     }
   }
 `;

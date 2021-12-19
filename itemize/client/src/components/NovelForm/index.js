@@ -84,17 +84,12 @@ function NovelForm(props) {
               type="isComplete"
               name="isComplete"
               className="form-input w-100">
+                <option selected value="N/A">Select Completed Status</option>
               <option value="Complete">Complete</option>
               <option value="Incomplete">Incomplete</option>
+              
             </select>
           </div>
-          {/* <div>
-          <label>Completed?   </label>
-    <input name="isComplete" type="checkbox" 
-    defaultChecked={formState.isComplete} 
-    onChange={handleCompletedClick} 
-    className="filled-in" id="filled-in-box"/>
-  </div> */}
           <div className="col-12 col-lg-3">
             <button className="btn btn-primary btn-block py-3" type="submit">
               Add Novel
@@ -111,7 +106,7 @@ function NovelForm(props) {
         <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
       </p>)
 
-      };
+      }
     </div>
   )
 }

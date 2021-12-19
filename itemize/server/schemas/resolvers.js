@@ -62,15 +62,14 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     // Make it so a logged in user can only remove a skill from their own profile
-    removeNovel: async (parent, { novel }, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { novels: novel } },
-          { new: true }
+    removeNovel: async (parent, {_id}) => {
+ 
+        return Novel.findOneAndDelete(
+          { _id: _id },
+          // { $pull: { novels: novel } },
+          // { new: true }
         );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+
     },
     addNovel: async (parent, { author, name, rank, isComplete }) => {
      
@@ -89,6 +88,7 @@ const resolvers = {
           {isComplete},
           {new: true}
         );
+        console.log(updatedNovel)
         return updatedNovel;
       
     },

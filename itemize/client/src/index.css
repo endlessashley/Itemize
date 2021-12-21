@@ -1675,3 +1675,7 @@ label form [type='radio'] {
 #edit-box {
   display: none;
 }
+
+.is-complete {
+  color: green;
+}

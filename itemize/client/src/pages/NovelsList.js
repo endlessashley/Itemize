@@ -64,7 +64,7 @@ function NovelsList() {
                                         < br />
                                         {novel.isComplete}
                                     </p>
-                                    <button className="btn btn-primary  py-1" onClick={() => setShowEdit(!showEdit)}>{showEdit ? 'Finished Updating' : 'Update Entry'}</button>
+                                    <button className="btn btn-dark  py-1" onClick={() => setShowEdit(!showEdit)}>{showEdit ? 'Finished Updating' : 'Update Entry'}</button>
                                     {showEdit && <div>
                                         <form
                                             
@@ -88,7 +88,7 @@ function NovelsList() {
 
 
 
-                                            <button className="btn btn-primary  py-1" type="submit">Submit</button>
+                                            <button className="btn btn-dark  py-1" type="submit">Submit</button>
                                         </form>
                                     </div>}
                                     <div>

@@ -70,6 +70,18 @@ export const QUERY_NOVELS = gql`
   }
 `;
 
+export const QUERY_NONFICTIONS = gql`
+  query nonfictions {
+    nonfictions {
+      _id
+      author
+      name
+      rank
+      isComplete
+    }
+  }
+`;
+
 
 
 

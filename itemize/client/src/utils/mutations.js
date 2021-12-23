@@ -52,3 +52,31 @@ export const REMOVE_NOVEL = gql`
     }
   }
 `;
+
+export const ADD_NONFICTION = gql`
+  mutation addNonfiction($author: String, $name: String, $rank: String, $isComplete: String) {
+    addNonfiction(author: $author, name: $name, rank: $rank, isComplete: $isComplete) {
+      author
+      name
+      rank
+      isComplete
+    }
+  }
+`;
+
+export const UPDATE_NONFICTION = gql`
+  mutation updateNonfiction($_id: ID!, $isComplete: String) {
+    updateNonfiction(_id: $_id, isComplete: $isComplete) {
+      _id
+      isComplete
+    }
+  }
+`;
+
+export const REMOVE_NONFICTION = gql`
+  mutation removeNonfiction($_id: ID!) {
+    removeNonfiction(_id: $_id) {
+      _id
+    }
+  }
+`;

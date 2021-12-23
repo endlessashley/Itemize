@@ -21,7 +21,7 @@ function NovelForm(props) {
         variables: { name: formState.name, author: formState.author, rank: formState.rank, isComplete: formState.isComplete },
       });
 
-      // window.location.reload();
+      window.location.reload();
 
     } catch (err) {
       console.error(err);

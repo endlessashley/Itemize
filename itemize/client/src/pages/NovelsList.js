@@ -22,12 +22,20 @@ function NovelsList() {
 
     let x = document.getElementById("edit-box")
 
+    let condition
+
 
     if (data) {
         novels = data.novels
         console.log(novels)
     }
 
+    // novels.map((novel) => {
+    //     let condition
+    //     if (novel.isComplete === "Complete") {
+    //         condition = true
+    //     }
+    // })
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -41,11 +49,19 @@ function NovelsList() {
     };
 
 
+    // const getCondition = () => {
+    //     let condition
+    //     novels.map(novel);
+    //     if (novel.isComplete === "Complete") {
+    //         condition = true
+    //     } else condition = false
+    // }
 
 
     return (
         <>
-            <div className="container">
+
+
                 <div className="row">
 
 
@@ -53,22 +69,27 @@ function NovelsList() {
                         <>
                             <h2>Your Novels:</h2>
                             {novels.map((novel) => (
+
                                 <div
                                     key={novel._id}
-                                    className="col-sm-12 col-md-3 col-lg-3 card" >
+
+                                    className="col-sm-12 col-md-2 col-lg-2 card"
+                                
+
+                                >
                                     <p>  {novel.name}
                                         < br />
                                         <span className="card-subheader" >by</span> {novel.author}
                                         < br />
                                         <span className="card-subheader">Rank:</span> {novel.rank}
                                         < br />
-                                        {novel.isComplete}
+                                        <span key={novel.isComplete}>{novel.isComplete}</span>
                                     </p>
-                                    <button className="btn btn-dark  py-1" onClick={() => setShowEdit(!showEdit)}>{showEdit ? 'Finished Updating' : 'Update Entry'}</button>
+                                    <button className="btn btn-dark btn-sm  py-1" onClick={() => setShowEdit(!showEdit)}>{showEdit ? 'Finished Updating' : 'Update Entry'}</button>
                                     {showEdit && <div>
                                         <form
-                                            
-                                            className="flex-row justify-center justify-space-between-md align-center"
+
+                                            // className="flex-row justify-center justify-space-between-md align-center"
                                             onSubmit={e => {
                                                 e.preventDefault();
                                                 editNovel({ variables: { _id: novel._id, isComplete: formState.isComplete } });
@@ -80,25 +101,25 @@ function NovelsList() {
                                                 type="isComplete"
                                                 name="isComplete"
                                                 placeholder="Update Completed Status"
-                                                className="form-input w-100">
+                                                className="form-input w-100 select">
                                                 <option value="Complete">Complete</option>
                                                 <option value="Incomplete">Incomplete</option>
-                                                <option selected value="N/A"> Update Status</option>
+                                                <option selected value="N/A"> Set Status</option>
                                             </select>
 
 
 
-                                            <button className="btn btn-dark  py-1" type="submit">Submit</button>
+                                            <button className="btn btn-dark btn-sm  py-1" type="submit">Submit</button>
                                         </form>
                                     </div>}
                                     <div>
-                                    <button className="btn btn-primary py-1"
-                                        type="submit"
-                                        onClick={()=> {
-                                            removeNovel({variables: {_id: novel._id}})
-                                        }}>Remove Entry</button>
+                                        <button className="btn btn-sm btn-primary py-1"
+                                            type="submit"
+                                            onClick={() => {
+                                                removeNovel({ variables: { _id: novel._id } })
+                                            }}>Remove Entry</button>
                                     </div>
-                                    
+
 
 
                                 </div>
@@ -115,7 +136,7 @@ function NovelsList() {
                         </>
                     ) : null}
                 </div>
-            </div>
+
         </>
     );
 }

@@ -22,6 +22,14 @@ const typeDefs = gql`
     isComplete: String
   }
 
+  type Nonfiction {
+    _id: ID
+    name: String
+    author: String
+    rank: String
+    isComplete: String
+  }
+
   type Query {
     users: [User]
     user: User
@@ -29,6 +37,8 @@ const typeDefs = gql`
     me: User
     novel (novelId: ID!): Novel
     novels: [Novel]
+    nonfiction (nonfictionId: ID!): Nonfiction
+    nonfictions: [Nonfiction]
   }
 
   type Mutation {
@@ -38,6 +48,9 @@ const typeDefs = gql`
     updateNovel(_id: ID!, name: String, author: String, rank: String, isComplete: String): Novel
     removeUser: User
     removeNovel(_id: ID!): Novel
+    addNonfiction(name: String, author: String, rank: String, isComplete: String): Nonfiction
+    updateNonfiction(_id: ID!, name: String, author: String, rank: String, isComplete: String): Nonfiction
+    removeNonfiction(_id: ID!): Nonfiction
   }
 `;
 

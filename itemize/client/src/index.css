@@ -400,7 +400,7 @@ h6 {
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin: 0 0 1rem;
   line-height: 1.5;
 }
@@ -424,7 +424,7 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #507691;
   text-decoration: none;
 }
 
@@ -1042,7 +1042,7 @@ a:hover {
 
 .card {
   border: 1px solid #1a1a1a;
-  margin: 1rem;
+  margin: .5rem;
   background-color: #E3E5BF;
   padding: 5px;
   text-align: center;
@@ -1216,8 +1216,8 @@ label form [type='radio'] {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -60px;
+  margin-right: -120px;
 }
 
 [class*='col-'] {
@@ -1678,4 +1678,18 @@ label form [type='radio'] {
 
 .is-complete {
   color: green;
+}
+
+.select {
+  font-size: 1rem
+}
+
+.profile-card {
+  padding: 25px;
+  border: 1px solid #1a1a1a;
+  margin: .5rem;
+  background-color: #E3E5BF;
+  font-size: 1.25rem;
+  text-align: center;
+  border-radius: 5px;
 }

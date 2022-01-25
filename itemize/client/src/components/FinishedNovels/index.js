@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from './Pagination';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_NOVELS, QUERY_SINGLE_USER } from '../../utils/queries';

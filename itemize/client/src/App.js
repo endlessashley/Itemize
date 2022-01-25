@@ -15,9 +15,12 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NovelsList from './pages/NovelsList';
-import CompletedNovels from './pages/CompletedNovels'
+import NovelProgress from './pages/NovelProgress'
 import NonfictionsList from './pages/NonfictionsList'
 import CompletedNonfiction from './pages/CompletedNonfiction'
+import CurrentBooksList from './pages/CurrentBooksList'
+
+import TestPagination from './pages/TestPagination'
 
 
 import { onError } from "@apollo/client/link/error";
@@ -86,13 +89,20 @@ function App() {
               <NovelsList />
             </Route>
             <Route exact path = "/novelprogress">
-              <CompletedNovels />
+              <NovelProgress />
             </Route>
             <Route exact path = "/nonfiction">
               <NonfictionsList/>
             </Route>
             <Route exact path = "/nonfictionprogress">
               <CompletedNonfiction />
+            </Route>
+            <Route exact path = "/currentbooks">
+              <CurrentBooksList />
+            </Route>
+
+            <Route exact path = "/testpagination">
+              <TestPagination />
             </Route>
 
 

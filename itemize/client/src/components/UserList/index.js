@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const UserList = ({ users, title }) => {
   if (!users.length) {
-    return <h3>No Profiles Yet</h3>;
+    return null;
   }
 
   return (

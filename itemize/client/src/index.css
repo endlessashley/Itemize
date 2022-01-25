@@ -999,7 +999,7 @@ a:hover {
 }
 
 .btn.btn-block {
-  width: 100%;
+  width: 75%;
   display: block;
   text-align: center;
 }
@@ -1007,6 +1007,12 @@ a:hover {
 .btn.btn-primary {
   background-color: #AB2346;
   color: #E3E5BF;
+}
+
+.btn.btn-showme {
+  background-color: #668C86;
+  color: #E3E5BF;
+  font-size: 1.25rem;
 }
 
 .btn.btn-primary:hover {
@@ -1216,8 +1222,9 @@ label form [type='radio'] {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-left: -60px;
-  margin-right: -120px;
+  margin-left: -20px;
+  margin-right: -20px;
+  justify-content: space-evenly;
 }
 
 [class*='col-'] {
@@ -1693,3 +1700,4 @@ label form [type='radio'] {
   text-align: center;
   border-radius: 5px;
 }
+

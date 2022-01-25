@@ -4,14 +4,17 @@ import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_NOVELS, QUERY_SINGLE_USER } from '../utils/queries';
 import { UPDATE_NOVEL, REMOVE_NOVEL } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 import NovelForm from "../components/NovelForm";
 
-function CompletedNovels() {
+function NovelProgress() {
 
     const { loading, data } = useQuery(QUERY_NOVELS);
     const [showEdit, setShowEdit] = useState(false);
     const [formState, setFormState] = useState('');
+    const [showComplete, setShowComplete] = useState(false)
+    const [showIncomplete, setShowIncomplete] = useState(false)
 
     const [removeNovel] = useMutation(REMOVE_NOVEL);
 
@@ -37,9 +40,9 @@ function CompletedNovels() {
     if (data) {
         novels = data.novels
         console.log(novels)
-        complete = novels.filter(novel => novel.isComplete == "Complete");
+        complete = novels.filter(novel => novel.isComplete == "Complete" && novel.owner == Auth.getProfile().data.name);
         console.log(complete)
-        incomplete = novels.filter(novel => novel.isComplete !=="Complete");
+        incomplete = novels.filter(novel => novel.isComplete !=="Complete" && novel.owner == Auth.getProfile().data.name);
         console.log(incomplete)
 
     }
@@ -54,7 +57,11 @@ return (
 
             {complete ? (
                 <>
-                    <h2>Completed Novels ({complete.length}/{novels.length}):</h2>
+                <div className = "flex-column justify-space-between-lg justify-center align-center text-center"> 
+                    <button className="btn btn-showme btn-block py-3" onClick={() => setShowComplete(!showComplete)}>{showComplete ? 'Hide Completed Novels' : 'Show Completed Novels'}</button>
+                </div>
+                {showComplete && <div className = "row">
+                    <h3>Completed Novels ({complete.length}/{novels.length}):</h3>
                     {complete.map((novel) => (
 
 
@@ -121,11 +128,15 @@ return (
 
 
                     ))}
-
+                </div>}
                 </>
             ) : null}
             {incomplete ? (
                 <>
+                                <div className = "flex-column justify-space-between-lg justify-center align-center text-center"> 
+                    <button className="btn btn-showme btn-block py-3" onClick={() => setShowIncomplete(!showIncomplete)}>{showIncomplete ? 'Hide Incomplete Novels' : 'Show Incomplete Novels'}</button>
+                </div>
+                {showComplete && <div className = "row">
                     <h2>Incomplete ({incomplete.length}/{novels.length}):</h2>
                     {incomplete.map((novel) => (
 
@@ -193,7 +204,7 @@ return (
 
 
                     ))}
-
+</div>}
                 </>
             ) : null}
 
@@ -206,4 +217,4 @@ return (
 }
 
 
-export default CompletedNovels;
+export default NovelProgress;

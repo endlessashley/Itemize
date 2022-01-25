@@ -17,12 +17,14 @@ const novelSchema = new Schema({
   },
   isComplete: {
     type: String,
-  }
-//   category: {
-//     type: Schema.Types.ObjectId,
-//     ref: 'Category',
-//     required: true
-//   }
+  },
+  owner: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+
+
 });
 
 const Novel = mongoose.model('Novel', novelSchema);

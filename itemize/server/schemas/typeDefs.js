@@ -15,11 +15,12 @@ const typeDefs = gql`
   }
 
   type Novel {
-    _id: ID
+    _id: ID!
     name: String
     author: String
     rank: String
     isComplete: String
+    owner: String
   }
 
   type Nonfiction {
@@ -30,15 +31,24 @@ const typeDefs = gql`
     isComplete: String
   }
 
+  type CurrentBook {
+    _id: ID
+    name: String
+    totalPages: String
+    pagesRead: String
+  }
+
   type Query {
     users: [User]
     user: User
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: User
-    novel (novelId: ID!): Novel
-    novels: [Novel]
+    novel (_id: ID): Novel
+    novels (owner: String): [Novel]
     nonfiction (nonfictionId: ID!): Nonfiction
     nonfictions: [Nonfiction]
+    currentBooks: [CurrentBook]
+    currentBook (currentBookId: ID!): CurrentBook
   }
 
   type Mutation {
@@ -47,10 +57,13 @@ const typeDefs = gql`
     addNovel(name: String, author: String, rank: String, isComplete: String): Novel
     updateNovel(_id: ID!, name: String, author: String, rank: String, isComplete: String): Novel
     removeUser: User
-    removeNovel(_id: ID!): Novel
+    removeNovel(novelId: ID!): Novel
     addNonfiction(name: String, author: String, rank: String, isComplete: String): Nonfiction
     updateNonfiction(_id: ID!, name: String, author: String, rank: String, isComplete: String): Nonfiction
     removeNonfiction(_id: ID!): Nonfiction
+    addCurrentBook(name: String, totalPages: String, pagesRead: String): CurrentBook
+    updateCurrentBook(_id: ID!, name: String, totalPages: String, pagesRead: String): CurrentBook
+    removeCurrentBook(_id: ID!): CurrentBook
   }
 `;
 

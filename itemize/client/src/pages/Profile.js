@@ -27,8 +27,8 @@ const Profile = () => {
 
   return (
 
+<>
 
-<div className="container">
   {user? (
     <>
     <h2>{user.name}'s Lists:</h2>
@@ -44,14 +44,19 @@ const Profile = () => {
       <br/>
       <Link to = {'/nonfictionprogress'}>Nonfiction Progress</Link>
       </div>
+      <div className="col-sm-12 col-md-3 col-lg-3 profile-card">
+      <Link to = {`/currentbooks`}>Current Books</Link>
+      <br/>
+      <br/>
+      </div>
       
     </div>
     </>
   ):null}
 
  
-</div>
 
+</>
 
   );
 };

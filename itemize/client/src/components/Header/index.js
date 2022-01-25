@@ -15,12 +15,14 @@ const Header = () => {
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
         <Link className="text-primary" to="/">
           <h1 className="m-0" style={{ fontSize: '3rem' }}>
-            Itemize
+            Just Pete Things
           </h1>
+          <br/>
+          <br/>
         </Link>
-        <p className="m-0 text-dark" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
+        {/* <p className="m-0 text-dark" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
           Track your progress. Meet your goals.
-        </p>
+        </p> */}
         <div>
           {Auth.loggedIn() ? (
             <>

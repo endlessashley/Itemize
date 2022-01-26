@@ -17,7 +17,12 @@ const nonfictionSchema = new Schema({
   },
   isComplete: {
     type: String,
-  }
+  },
+  owner: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 
 });
 

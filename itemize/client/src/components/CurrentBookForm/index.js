@@ -7,6 +7,8 @@ import { ADD_CURRENT_BOOK } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
+import swal from 'sweetalert';
+
 function CurrentBookForm(props) {
   // const [state, dispatch] = useStoreContext();
   const [formState, setFormState] = useState({ name: '', totalPages: '', pagesRead: ''});
@@ -14,15 +16,22 @@ function CurrentBookForm(props) {
 
   const [addCurrentBook, { error }] = useMutation(ADD_CURRENT_BOOK);
 
+  const addAlert = () => {
+    swal({title: "Entry Added", type: "success"}).then(function(){
+        window.location.reload();
+    })
+}
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const data = await addCurrentBook({
-        variables: { name: formState.name, totalPages: formState.totalPages, pagesRead: formState.pagesRead },
+        variables: { owner: Auth.getProfile().data.name, name: formState.name, totalPages: formState.totalPages, pagesRead: formState.pagesRead},
+
       });
-
-      window.location.reload();
-
+     
+      addAlert()
+      
     } catch (err) {
       console.error(err);
     }
@@ -35,67 +44,73 @@ function CurrentBookForm(props) {
       ...formState,
       [name]: value,
     });
+    console.log(Auth.getProfile().data);
   };
 
 
 
 
   return (
-    <div>
-      <h4>Add a new current book to your list below:</h4>
+   
+      <>
 
       {Auth.loggedIn() ? (
+
         <form
           className="flex-row justify-center justify-space-between-md align-center"
           onSubmit={handleFormSubmit}>
-          <div className="col-12 col-lg-9">
+                      <div className="col-12 col-lg-9 mx-auto">
             <input
               name="name"
-              type="text"
-              placeholder="Name"
+              type="name"
+              placeholder="Title"
               className="form-input w-100"
               value={formState.name}
               onChange={handleChange}
             />
           </div>
-          <div className="col-12 col-lg-9">
+          <div className="col-12 col-lg-9 mx-auto">
+            <input
+              name="pagesRead"
+              placeholder="Pages Read"
+              value={formState.pagesRead}
+              type="pagesRead"
+              className="form-input w-100"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="col-12 col-lg-9 mx-auto">
             <input
               name="totalPages"
               placeholder="Total Pages"
-              type="number"
+              type="totalPages"
               value={formState.totalPages}
               className="form-input w-100"
               onChange={handleChange}
             />
           </div>
-          <div className="col-12 col-lg-9">
-            <input value={formState.pagesRead}
-              onChange={handleChange}
-              type="number"
-              name="pagesRead"
-              placeholder="Pages Read"
-              className="form-input w-100">
-              
-            </input>
-          </div>
-          <div className="col-12 col-lg-3">
-            <button className="btn btn-primary btn-block py-3" type="submit">
-              Add Current Book
+
+          <div className="col-12 col-lg-9 mx-auto">
+            <button className="btn btn-primary btn-block py-2 w-50 mx-auto" type="submit">
+              Add CurrentBook
             </button>
           </div>
+          
           {error && (
             <div className="col-12 my-3 bg-danger text-white p-3">
               Something went wrong...
             </div>
           )}
         </form>
+    
       ) : (<p>
-        You need to be logged in to endorse skills. Please{' '}
+        You need to be logged in. Please{' '}
         <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
       </p>)
 
       }
-    </div>
+</>
   )
 }
 

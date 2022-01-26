@@ -15,10 +15,11 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NovelsList from './pages/NovelsList';
-import NovelProgress from './pages/NovelProgress'
+
 import NonfictionsList from './pages/NonfictionsList'
-import CompletedNonfiction from './pages/CompletedNonfiction'
+
 import CurrentBooksList from './pages/CurrentBooksList'
+
 
 import TestPagination from './pages/TestPagination'
 
@@ -88,22 +89,19 @@ function App() {
             <Route exact path="/novels/:id">
               <NovelsList />
             </Route>
-            <Route exact path = "/novelprogress">
-              <NovelProgress />
-            </Route>
-            <Route exact path = "/nonfiction">
+
+            <Route exact path = "/nonfiction/:id">
               <NonfictionsList/>
             </Route>
-            <Route exact path = "/nonfictionprogress">
-              <CompletedNonfiction />
-            </Route>
-            <Route exact path = "/currentbooks">
+
+            <Route exact path = "/currentbooks/:id">
               <CurrentBooksList />
             </Route>
 
             <Route exact path = "/testpagination">
               <TestPagination />
             </Route>
+
 
 
 

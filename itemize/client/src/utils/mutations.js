@@ -59,6 +59,7 @@ export const REMOVE_NOVEL = gql`
 export const ADD_NONFICTION = gql`
   mutation addNonfiction($author: String, $name: String, $rank: String, $isComplete: String) {
     addNonfiction(author: $author, name: $name, rank: $rank, isComplete: $isComplete) {
+      owner
       author
       name
       rank
@@ -87,6 +88,7 @@ export const REMOVE_NONFICTION = gql`
 export const ADD_CURRENT_BOOK = gql`
   mutation addCurrentBook( $name: String, $totalPages: String, $pagesRead: String) {
     addCurrentBook(name: $name, totalPages: $totalPages, pagesRead: $pagesRead) {
+      owner
       name
       totalPages
       pagesRead
@@ -105,7 +107,7 @@ export const UPDATE_CURRENT_BOOK = gql`
 
 export const REMOVE_CURRENT_BOOK = gql`
   mutation removeCurrentBook($_id: ID!) {
-    removeCurrentBook(_id: $_id) {
+    removeCurrentBook(currentBookId: $_id) {
       _id
     }
   }

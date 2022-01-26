@@ -150,7 +150,8 @@ const resolvers = {
       if (context.user) {
         const novel = await Novel.findOneAndDelete({
           _id: novelId,
-        });
+        },
+       );
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -160,6 +161,42 @@ const resolvers = {
         return novel;
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+
+
+    removeNonfiction: async (parent, { nonfictionId }, context) => {
+      if (context.user) {
+        const nonfiction = await Nonfiction.findOneAndDelete({
+          _id: nonfictionId,
+        },
+       );
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { nonfictions: {_id: nonfictionId }} }
+        );
+
+        return nonfiction;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeCurrentBook: async (parent, { currentBookId }, context) => {
+      if (context.user) {
+        const currentBook = await CurrentBook.findOneAndDelete({
+          _id: currentBookId,
+        },
+       );
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { currentBooks: {_id: currentBookId }} }
+        );
+
+        return currentBook;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+ 
     },
 
     // addNovel: async (parent, { author, name, rank, isComplete }) => {
@@ -199,7 +236,8 @@ const resolvers = {
           rank,
           isComplete,
           owner: context.user.name,
-        });
+        },
+        );
         console.log(owner)
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -212,53 +250,67 @@ const resolvers = {
     },
 
 
+    addNonfiction: async (parent, { author, name, rank, isComplete }, context) => {
+      if (context.user) {
+        const nonfiction = await Nonfiction.create({
+          name,
+          author,
+          rank,
+          isComplete,
+          owner: context.user.name,
+        },
+       );
+        // console.log(owner)
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { nonfictions: nonfiction } }
+        );
+          console.log(nonfiction)
+        return nonfiction;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addCurrentBook: async (parent, { name, totalPages, pagesRead }, context) => {
+      if (context.user) {
+        const currentBook = await CurrentBook.create({
+          name,
+          totalPages,
+          pagesRead,
+          owner: context.user.name,
+        },
+      );
+        // console.log(owner)
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { currentBooks: currentBook } }
+        );
+          console.log(currentBook)
+        return currentBook;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+
 
     updateNovel: async (parent, { _id, author, name, rank, isComplete }, context) => {
-      try {
+      if (context.user) {
         const updatedNovel = await Novel.findByIdAndUpdate(
           { _id: _id },
           { isComplete },
-          // { new: true }
+          { new: true }
         );
         console.log(updatedNovel)
         return updatedNovel;
 
-      } catch (error) {
-        console.log(error)
-      }
+      } throw new AuthenticationError('You need to be logged in!');
     },
 
-    removeNonfiction: async (parent, { _id }) => {
-      try {
-        return Nonfiction.findOneAndDelete(
-          { _id: _id },
-          // { $pull: { novels: novel } },
-          // { new: true }
-        );
 
-      } catch (error) {
-        console.log(error)
-      }
-    },
-
-    addNonfiction: async (parent, { author, name, rank, isComplete }) => {
-      try {
-
-        return Nonfiction.create({
-          author,
-          name,
-          rank,
-          isComplete
-        });
-
-      } catch (error) {
-        console.log(error)
-      }
-    },
 
     updateNonfiction: async (parent, { _id, author, name, rank, isComplete }, context) => {
-      try {
-        const updatedNovel = await Nonfiction.findByIdAndUpdate(
+      if (context.user) {
+        const updatedNonfiction = await Nonfiction.findByIdAndUpdate(
           { _id: _id },
           { isComplete },
           { new: true }
@@ -266,40 +318,15 @@ const resolvers = {
         console.log(updatedNonfiction)
         return updatedNonfiction;
 
-      } catch (error) {
-        console.log(error)
-      }
-    },
-    removeCurrentBook: async (parent, { _id }) => {
-      try {
-        return CurrentBook.findOneAndDelete(
-          { _id: _id },
-          // { $pull: { novels: novel } },
-          // { new: true }
-        );
-
-      } catch (error) {
-        console.log(error)
-      }
+      } 
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-    addCurrentBook: async (parent, { name, totalPages, pagesRead }) => {
-      try {
 
-        return CurrentBook.create({
-  
-          name,
-          totalPages,
-          pagesRead
-        });
 
-      } catch (error) {
-        console.log(error)
-      }
-    },
 
     updateCurrentBook: async (parent, { _id, name, totalPages, pagesRead }, context) => {
-      try {
+      if (context.user) {
         const updatedCurrentBook = await CurrentBook.findByIdAndUpdate(
           { _id: _id },
           { pagesRead },
@@ -308,9 +335,7 @@ const resolvers = {
         console.log(updatedCurrentBook)
         return updatedCurrentBook;
 
-      } catch (error) {
-        console.log(error)
-      }
+      } throw new AuthenticationError('You need to be logged in!');
     }
 
   },

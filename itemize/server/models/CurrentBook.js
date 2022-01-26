@@ -15,7 +15,12 @@ const currentBookSchema = new Schema({
     pagesRead: {
         type: String,
         trim: true
-    }
+    },
+    owner: {
+        type: String,
+        required: true,
+        trim: true,
+      },
 });
 
 const CurrentBook = mongoose.model('CurrentBook', currentBookSchema);

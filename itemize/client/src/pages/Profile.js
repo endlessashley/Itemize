@@ -34,18 +34,16 @@ const Profile = () => {
     <h2>{user.name}'s Lists:</h2>
     <div className="row">
       
-      <div className="col-sm-12 col-md-3 col-lg-3 profile-card">
-      <Link to = {`/novels/${user._id}`}>All Novels</Link>
-      <br/>
-      <Link to = {'/novelprogress'}>Novel Progress</Link>
+      <div className="d-flex align-center justify-center col-sm-12 col-md-3 col-lg-3 profile-card">
+      <Link to = {`/novels/${user._id}`}>Novels</Link>
+
       </div>
-      <div className="col-sm-12 col-md-3 col-lg-3 profile-card">
-      <Link to = {`/nonfiction`}>All Nonfiction</Link>
-      <br/>
-      <Link to = {'/nonfictionprogress'}>Nonfiction Progress</Link>
+      <div className="d-flex align-center justify-center col-sm-12 col-md-3 col-lg-3 profile-card">
+      <Link to = {`/nonfiction/${user._id}`}>Nonfiction</Link>
+
       </div>
-      <div className="col-sm-12 col-md-3 col-lg-3 profile-card">
-      <Link to = {`/currentbooks`}>Current Books</Link>
+      <div className="d-flex align-center justify-center col-sm-12 col-md-3 col-lg-3 profile-card">
+      <Link to = {`/currentbooks/${user._id}`}>Current Books</Link>
       <br/>
       <br/>
       </div>

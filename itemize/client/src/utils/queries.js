@@ -79,6 +79,7 @@ export const QUERY_NONFICTIONS = gql`
       name
       rank
       isComplete
+      owner
     }
   }
 `;
@@ -90,6 +91,7 @@ export const QUERY_CURRENT_BOOKS = gql`
       name
       totalPages
       pagesRead
+      owner
     }
   }
 `;

@@ -7,12 +7,21 @@ import { ADD_NOVEL } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
+import swal from 'sweetalert';
+
 function NovelForm(props) {
   // const [state, dispatch] = useStoreContext();
   const [formState, setFormState] = useState({ name: '', author: '', rank: '', isComplete: '' });
 
 
   const [addNovel, { error }] = useMutation(ADD_NOVEL);
+
+  const addAlert = () => {
+    swal({title: "Entry Added", type: "success"})
+    .then(function(){
+        window.location.reload();
+    })
+}
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -22,8 +31,8 @@ function NovelForm(props) {
 
       });
      
-      window.location.reload();
-
+      addAlert()
+      
     } catch (err) {
       console.error(err);
     }
@@ -43,17 +52,15 @@ function NovelForm(props) {
 
 
   return (
-    <div className="row">
-      
+   
+      <>
 
       {Auth.loggedIn() ? (
-        <div 
-        // className="flex-row justify-space-between-lg justify-center align-center text-center"
-        >
+
         <form
           className="flex-row justify-center justify-space-between-md align-center"
           onSubmit={handleFormSubmit}>
-          <div className="col-12 col-lg-9">
+          <div className="col-12 col-lg-9 mx-auto">
             <input
               name="author"
               placeholder="Author"
@@ -63,7 +70,7 @@ function NovelForm(props) {
               onChange={handleChange}
             />
           </div>
-          <div className="col-12 col-lg-9">
+          <div className="col-12 col-lg-9 mx-auto">
             <input
               name="name"
               type="name"
@@ -73,7 +80,7 @@ function NovelForm(props) {
               onChange={handleChange}
             />
           </div>
-          <div className="col-12 col-lg-9">
+          <div className="col-12 col-lg-9 mx-auto">
             <input
               name="rank"
               placeholder="Rank"
@@ -83,7 +90,7 @@ function NovelForm(props) {
               onChange={handleChange}
             />
           </div>
-          <div className="col-12 col-lg-9">
+          <div className="col-12 col-lg-9 mx-auto">
             <select value={formState.isComplete}
               onChange={handleChange}
               type="isComplete"
@@ -95,8 +102,8 @@ function NovelForm(props) {
               
             </select>
           </div>
-          <div className="col-12 col-lg-9">
-            <button className="btn btn-primary btn-block py-3" type="submit">
+          <div className="col-12 col-lg-9 mx-auto">
+            <button className="btn btn-primary btn-block py-2 w-50 mx-auto" type="submit">
               Add Novel
             </button>
           </div>
@@ -107,14 +114,14 @@ function NovelForm(props) {
             </div>
           )}
         </form>
-        </div>
+    
       ) : (<p>
-        You need to be logged in to endorse skills. Please{' '}
+        You need to be logged in. Please{' '}
         <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
       </p>)
 
       }
-    </div>
+</>
   )
 }
 

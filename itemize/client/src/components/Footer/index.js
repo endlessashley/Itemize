@@ -15,10 +15,7 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>        <div>
-          <img src="./images/itemize-icon.png" alt="itemize logo"></img>
-        </div>
-      </h4>
+
       </div>
     </footer>
   );

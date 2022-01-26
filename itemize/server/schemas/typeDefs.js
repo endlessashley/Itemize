@@ -29,6 +29,7 @@ const typeDefs = gql`
     author: String
     rank: String
     isComplete: String
+    owner: String
   }
 
   type CurrentBook {
@@ -36,6 +37,7 @@ const typeDefs = gql`
     name: String
     totalPages: String
     pagesRead: String
+    owner: String
   }
 
   type Query {
@@ -46,24 +48,27 @@ const typeDefs = gql`
     novel (_id: ID): Novel
     novels (owner: String): [Novel]
     nonfiction (nonfictionId: ID!): Nonfiction
-    nonfictions: [Nonfiction]
-    currentBooks: [CurrentBook]
+    nonfictions (owner: String): [Nonfiction]
+    currentBooks (owner: String): [CurrentBook]
     currentBook (currentBookId: ID!): CurrentBook
   }
 
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addNovel(name: String, author: String, rank: String, isComplete: String): Novel
-    updateNovel(_id: ID!, name: String, author: String, rank: String, isComplete: String): Novel
     removeUser: User
-    removeNovel(novelId: ID!): Novel
+
+    addNovel(name: String, author: String, rank: String, isComplete: String): Novel
     addNonfiction(name: String, author: String, rank: String, isComplete: String): Nonfiction
-    updateNonfiction(_id: ID!, name: String, author: String, rank: String, isComplete: String): Nonfiction
-    removeNonfiction(_id: ID!): Nonfiction
     addCurrentBook(name: String, totalPages: String, pagesRead: String): CurrentBook
+
+    updateNovel(_id: ID!, name: String, author: String, rank: String, isComplete: String): Novel
+    updateNonfiction(_id: ID!, name: String, author: String, rank: String, isComplete: String): Nonfiction
     updateCurrentBook(_id: ID!, name: String, totalPages: String, pagesRead: String): CurrentBook
-    removeCurrentBook(_id: ID!): CurrentBook
+   
+    removeNovel(novelId: ID!): Novel
+    removeNonfiction(nonfictionId: ID!): Nonfiction
+    removeCurrentBook(currentBookId: ID!): CurrentBook
   }
 `;
 

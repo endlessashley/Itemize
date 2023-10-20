@@ -8,9 +8,8 @@ const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const app = express();
-
-// const uri = process.env.MONGODB_URI;
 
 const server = new ApolloServer({
   typeDefs,
